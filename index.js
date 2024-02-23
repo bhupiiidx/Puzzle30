@@ -1,3 +1,7 @@
+let timer = null;
+let interval = 1000;
+let seconds = 30;
+
 const showPuzzle = () => {
 	let newArr = [...Array(30)].map((x, i) => i + 1);
 	let puzzeledArray = [];
@@ -17,28 +21,28 @@ const showPuzzle = () => {
 	$("#rootPuzzle").html(rootLitral);
 	rootPuzzle.innerHTML = rootLitral;
 };
-const startTimer = (seconds = 30) => {
+const startTimer = () => {
 	// Update the countdown every 1 second
-	const timer = setInterval(function () {
-		$("#rootTimer").removeClass("text-danger");
-		$("#rootTimer").addClass("text-success");
-		$("#rootTimer").html("0:" + seconds + "s");
-		seconds--;
+	let sec = seconds;
+	timer = setInterval(function () {
+		$("#rootTimer").html("0:" + sec + "s");
+		sec--;
 
 		// If the countdown reaches 0, stop the timer
-		if (seconds < 0) {
+		if (sec < 0) {
 			clearInterval(timer);
 			$("#rootTimer").html("Time's up!");
 			$("#rootTimer").addClass("text-danger");
 		}
-	}, 1100);
+	}, interval);
 };
 
 const startPuzzle = () => {
+	$("#rootTimer").addClass("text-success").removeClass("text-danger").html("Starting Timer...");
 	$("#start").addClass("d-none");
 	$("#stop").removeClass("d-none");
 	showPuzzle();
-	startTimer(30);
+	startTimer();
 	$("#wrapper").removeClass("d-none");
 };
 const stopPuzzle = () => {
@@ -46,4 +50,5 @@ const stopPuzzle = () => {
 	$("#start").removeClass("d-none");
 	$("#wrapper").addClass("d-none");
 	clearInterval(timer);
+	timer = null;
 };
