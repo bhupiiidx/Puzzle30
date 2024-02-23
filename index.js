@@ -45,5 +45,5 @@ const stopPuzzle = () => {
 	$("#stop").addClass("d-none");
 	$("#start").removeClass("d-none");
 	$("#wrapper").addClass("d-none");
-	startTimer(0);
+	clearInterval(timer);
 };
