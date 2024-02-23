@@ -1,5 +1,5 @@
 const showPuzzle = () => {
-	let newArr = [...Array(30)].map((x, i) => i);
+	let newArr = [...Array(30)].map((x, i) => i + 1);
 	let puzzeledArray = [];
 	for (let i = 0; i < 30; i++) {
 		let index = Math.floor(Math.random() * newArr.length);
@@ -33,7 +33,7 @@ const startTimer = () => {
 			$("#rootTimer").html("Time's up!");
 			$("#rootTimer").addClass("text-danger");
 		}
-	}, 1000);
+	}, 2000);
 };
 
 const startPuzzle = () => {
