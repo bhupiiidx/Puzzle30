@@ -17,9 +17,7 @@ const showPuzzle = () => {
 	$("#rootPuzzle").html(rootLitral);
 	rootPuzzle.innerHTML = rootLitral;
 };
-const startTimer = () => {
-	let seconds = 30;
-
+const startTimer = (seconds = 30) => {
 	// Update the countdown every 1 second
 	const timer = setInterval(function () {
 		$("#rootTimer").removeClass("text-danger");
@@ -33,18 +31,19 @@ const startTimer = () => {
 			$("#rootTimer").html("Time's up!");
 			$("#rootTimer").addClass("text-danger");
 		}
-	}, 2000);
+	}, 1100);
 };
 
 const startPuzzle = () => {
 	$("#start").addClass("d-none");
 	$("#stop").removeClass("d-none");
 	showPuzzle();
-	startTimer();
+	startTimer(30);
 	$("#wrapper").removeClass("d-none");
 };
 const stopPuzzle = () => {
 	$("#stop").addClass("d-none");
 	$("#start").removeClass("d-none");
 	$("#wrapper").addClass("d-none");
+	startTimer(0);
 };
